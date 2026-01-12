@@ -11,7 +11,15 @@ body
     background-color: white;
     color: black;
 }
+h1{
+    background-color: darkred;
+    color: black;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 0;
+    border-bottom: 2px solid red;
 
+}
 header {
     background-color: darkred;
     color: black;
@@ -37,4 +45,14 @@ nav a {
     text-decoration: none;
     padding: 10px 15px;
     margin: 0 5px;
+}
+button{
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.6);
+    
+}
+.playbutton{
+    display:inline;
 }

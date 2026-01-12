@@ -23,12 +23,16 @@
 <ul class="performances">
     {% for performance in performances %}
         <li class="performance">
-            <h3> {{ performance.play.title_play }} </h3>
+            <p class="playbutton">
+            <button> {{ performance.play.title_play }} </button> &lt-- Rezerviraj sjedala za ovu predstavu
+            <!--IMPLEMENTIRATI OTVARANJE KINO DVORANE ZA OVE GUMBE-->
+            </p>
             <h5> {{ performance.play.genre_play }} </h5>
             <h5> {{ performance.play.duration_play }} </h5>
             <p> {{ performance.play.description_play }} </p>
             <p><strong> {{ performance.date_performance }} </strong></p>
-            <p><strong> {{ performance.price_performance }} </strong></p>
+            <p><strong> {{ performance.price_performance }} &euro;</strong></p>
+            <br>
         </li>
     {% endfor %}
 </ul>

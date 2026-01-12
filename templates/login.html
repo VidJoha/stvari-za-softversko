@@ -1,0 +1,24 @@
+{% extends '_layout.html' %}
+{% block contents %}
+{{poruka}}
+<form action="/login" method="post">
+    <h2>Ulogirajte se</h2>
+    <label for="ime">Ime</label>
+    <input type="text" name="ime">
+    <label for="lozinka">Lozinka</label>
+    <input type="password" name="lozinka">
+    <button type="submit">Ulogirajte se</button>
+    <br>
+    <br>
+</form>
+<form action="/register" method="post">
+    <h2>Registrirajte se</h2>
+    <label for="ime">Ime</label>
+    <input type="text" name="ime">
+    <label for="lozinka">Lozinka</label>
+    <input type="password" name="lozinka">
+    <label for="email">E-mail</label>
+    <input type="text" name="email">
+    <button type="submit">Registrirajte se</button>
+</form>
+{% endblock %}

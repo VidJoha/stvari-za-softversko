@@ -5,7 +5,6 @@ from pymysql.err import MySQLError;
 import importlib;
 from db import get_db_connection;
 import db;
-
 # Model imports:
 import models.hall, models.location, models.performance, models.play, models.reservation, models.seat, models.user
 from models.models import db as sqlalchemy_db
@@ -24,14 +23,17 @@ Session(app);
 sqlalchemy_db.init_app(app)
 migrate = Migrate(app, sqlalchemy_db)
 
+
 # --------------------------- Rute
 @app.route('/')
 def index():
-    # Korijensku rutu ćemo preusmjeriti na /svidogadaji
-    return redirect( '/svidogadaji' );
+    # Korijensku rutu ćemo preusmjeriti na /login
+    return redirect( '/login' );
 
 # Popis dozvoljenih kontrolera i za svaki od njih dozvoljenih akcija.
 ALLOWED_ROUTES = {
+    'login':['index'],
+    'register':['index'],
     'svidogadaji': ['index'],
     'kino': ['index'],
     'kazaliste': ['index'],
@@ -66,3 +68,6 @@ def dispatch( controller, action ):
 
     except Exception as e:
         abort( 500, str(e) );
+
+
+
