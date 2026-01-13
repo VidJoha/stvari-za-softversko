@@ -9,12 +9,12 @@ class LoginController:
           session['password']=request.form.get('lozinka')
           user = CheckLogin.check_login( session['username'],session['password']);
 
-          if(user):
-             print("Unosim usera u flask login")
-             print("i nije bacio gresku")
-             return redirect('/svidogadaji')
-          else:
+          if(user==0):
+             poruka="Provjerite mail."
+          elif(user==1):
              poruka="Niste unijeli točno ime ili lozinku."
+          else:
+             return redirect('/svidogadaji')
 
       return render_template('login.html',poruka=poruka)
       

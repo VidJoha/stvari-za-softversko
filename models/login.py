@@ -1,4 +1,5 @@
 from werkzeug.security import check_password_hash
+
 import importlib;
 from models.models import db as sqlalchemy_db
 from models.user import User
@@ -8,11 +9,14 @@ class CheckLogin:
         # Provjeri postoji li korisnik s ovim username-om i passwordom.
         
         user = sqlalchemy_db.session.execute( sqlalchemy_db.select(User).where(User.username == username) ).scalars().one()
+        if(user.has_registered==0):
+            return 0;
+        
         user2=User2(user.id_user,user.username,user.password_hash)
         if(check_password_hash(user2.password,password)):
             return user2
 
-        return None;
+        return 1;
 
 class User2:
     def __init__(this, id, username, password):

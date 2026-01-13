@@ -2,12 +2,14 @@ from flask import Flask, abort, redirect, session;
 from flask_session import Session;
 from flask_migrate import Migrate;
 from pymysql.err import MySQLError;
+from flask_mail import Mail, Message;
 import importlib;
 from db import get_db_connection;
 import db;
 # Model imports:
 import models.hall, models.location, models.performance, models.play, models.reservation, models.seat, models.user
 from models.models import db as sqlalchemy_db
+
 
 # --------------------------- Konfiguracija
 app = Flask( __name__ );
@@ -22,7 +24,8 @@ Session(app);
 # --------------------------- SQLAlchemy
 sqlalchemy_db.init_app(app)
 migrate = Migrate(app, sqlalchemy_db)
-
+#---------------------------- mail
+mail=Mail(app);
 
 # --------------------------- Rute
 @app.route('/')
@@ -33,6 +36,7 @@ def index():
 # Popis dozvoljenih kontrolera i za svaki od njih dozvoljenih akcija.
 ALLOWED_ROUTES = {
     'login':['index'],
+    'mail':['index'],
     'register':['index'],
     'svidogadaji': ['index'],
     'kino': ['index'],
